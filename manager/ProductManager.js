@@ -1,9 +1,9 @@
 const fs= require('fs').promises
-
+const path = require("path");
 
 class ProductManager{
-    constructor(path){
-        this.path=path;
+    constructor(){
+        this.path = path.join(__dirname, "../bd/products.json");
     }
 
     async addProduct(product) {
@@ -22,7 +22,7 @@ class ProductManager{
         }    
     }
 
-    async getProduct(){
+     async getProduct(){
         try {
             const data= await fs.readFile(this.path,'utf8');
             const products= JSON.parse(data);
