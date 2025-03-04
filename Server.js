@@ -6,7 +6,7 @@ const cartRouter= require('./routes/carts.routes.js')
 const path = require("path");
 const http= require('http')
 const socketIo=require('socket.io');
-const { addProductSocket } = require('./controller/products.controller.js');
+const { addProductSocket ,deleteProductSocket} = require('./controller/products.controller.js');
 const app= express();
 const server=http.createServer(app)
 const io=socketIo(server);
@@ -26,14 +26,21 @@ io.on("connection", (socket) => {
     console.log(`Usuario conectado con ID: ${socket.id}`);
 
     socket.on("agregarProducto", async(producto)=>{
-          //console.log(producto)
         try {
             const productoNuevo= await addProductSocket(producto)
             io.emit("productoNuevo",productoNuevo)
-            console.log(productoNuevo)
         } catch (error) {
             console.log("Error al agregar producto",error)
         }
+    })
+
+    socket.on("eliminarProducto",async(idProducto)=>{
+            try {
+                const updateListProduct= await deleteProductSocket(idProducto)
+                io.emit("listaActualizada", updateListProduct)
+            } catch (error) {
+                console.log("Error al eliminar producto",error)
+            }
     })
 
 

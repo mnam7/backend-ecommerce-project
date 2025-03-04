@@ -95,8 +95,19 @@ const addProductSocket = async (producto) => {
         await productManager.addProduct(newProduct);
         return newProduct;
     } catch (error) {
-        throw new Error(error.message);
+        throw new Error(error.message)
     }
 };
 
-module.exports={getAllproducts, getProductbyId, addProduct, updateProduct,deleteProduct, getAllProductsView,addProductSocket, getRealTimeProducts}
+const deleteProductSocket =async(productoId)=>{
+    try {
+        await productManager.deleteProduct(parseInt(productoId));
+        const updatedProducts = await productManager.getProduct();
+        return updatedProducts;
+    } catch (error) {
+        throw new Error(error.message)    
+    }
+
+}
+
+module.exports={getAllproducts, getProductbyId, addProduct, updateProduct,deleteProduct, getAllProductsView,addProductSocket, getRealTimeProducts,deleteProductSocket}

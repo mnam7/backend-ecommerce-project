@@ -1,16 +1,5 @@
 [
   {
-    "title": "Producto C",
-    "description": "Descripción del producto C",
-    "price": 105,
-    "status": true,
-    "code": "P003",
-    "category": "C",
-    "stock": 50,
-    "thumbnails": "rutaC",
-    "id": 1
-  },
-  {
     "title": "Producto A",
     "description": "Descripción del producto A",
     "price": 105,
@@ -22,14 +11,25 @@
     "id": 2
   },
   {
-    "title": "Producto Actualizado3",
-    "description": "Descripción actualizada3",
-    "price": 150,
-    "status": true,
-    "code": "P003A",
-    "category": "B",
-    "stock": 25,
-    "thumbnails": "rutaB",
+    "title": "Producto B",
+    "description": "productoB",
+    "price": "3",
+    "status": "true",
+    "code": "B009",
+    "category": "categoria B",
+    "stock": "10",
+    "thumbnails": "thumbnailsB",
+    "id": 2
+  },
+  {
+    "title": "Producto C",
+    "description": "productoC",
+    "price": "9",
+    "status": "true",
+    "code": "C006",
+    "category": "categoriaC",
+    "stock": "9",
+    "thumbnails": "thumbnailsC",
     "id": 3
   }
 ]

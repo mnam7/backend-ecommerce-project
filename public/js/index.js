@@ -95,12 +95,42 @@ const updateProducts = (newProduct) => {
      
   }
 
-
-  
 socket.on("productoNuevo", (nuevoProducto) => {
     console.log(nuevoProducto)
     updateProducts(nuevoProducto);
 });
+
+
+async function eliminarProducto (){
+   
+    const { value: idProducto } = await Swal.fire({
+        title: "Ingrese el id del producto",
+        input: "text",
+        inputLabel: "ID del producto",
+        showCancelButton: true,
+        inputValidator: (value) => {
+        if (!value) {
+        return "Es obligatorio completar el campo!";
+        }
+    }
+    });
+if (idProducto) {
+        Swal.fire(`El ID del producto es ${idProducto}`);
+        socket.emit("eliminarProducto", idProducto )
+    }
+}
+
+socket.on("listaActualizada", (updateListProduct) => {
+    console.log(updateListProduct);
+    const productList = document.getElementById("lista-producto");
+    productList.innerHTML = '';  
+    updateListProduct.forEach(product => {
+        const productElement = document.createElement("li");
+        productElement.innerHTML = `<h4>${product.title}</h4>`;
+        productList.appendChild(productElement);  
+    });
+});
+
 
 
 
