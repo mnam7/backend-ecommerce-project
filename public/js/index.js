@@ -87,18 +87,23 @@ const { value: formValues } = await Swal.fire({
 
 const updateProducts = (newProduct) => {
     const productList = document.getElementById("lista-producto");
-    productList.innerHTML = '';  
       const productElement = document.createElement("li");
       productElement.innerHTML = `
         <h4>${newProduct.title}</h4>
       `;
       productList.appendChild(productElement); 
+     
   }
+
+
   
 socket.on("productoNuevo", (nuevoProducto) => {
     console.log(nuevoProducto)
     updateProducts(nuevoProducto);
 });
+
+
+
 
 
 agregarProducto();
