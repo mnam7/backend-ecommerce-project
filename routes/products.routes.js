@@ -4,8 +4,8 @@ const productController = require('../controller/products.controller');
 
 
 router.get('/', productController.getAllproducts);
-router.get('/home',productController.getAllProductsView);
-router.get('/realTimeProducts',productController.getRealTimeProducts)
+//router.get('/home',productController.getAllProductsView); //getAllProductsView
+//router.get('/realTimeProducts',productController.getRealTimeProducts)
 router.get('/:pid', productController.getProductbyId);
 router.post('/', productController.addProduct);
 router.put('/:pid',productController.updateProduct);

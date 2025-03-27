@@ -12,11 +12,26 @@
     </div>
     <div>
         <ul>
-            {{#each products}}
-            <li>{{title}}</li>
+            {{#each productos}}
+            <li>{{title}}
+               <form action="/api/67e3697106fb5a580effad6c/product/{{this._id}}" method="POST">
+                        <input type="hidden" name="quantity" value="1">
+                        <button type="submit">Agregar al carrito</button>
+                </form>
+            </li>
+             
             {{/each}}
         </ul>
     </div>
+    <div class="pagination">
+    {{#if hasPrevPage}}
+      <a href="/students_paginate_natural?page={{prevPage}}&limit=10">Anterior</a>
+    {{/if}}
+    <span>Página {{currentPage}} de {{totalPages}}</span>
+    {{#if hasNextPage}}
+      <a href="/students_paginate_natural?page={{nextPage}}&limit=10">Siguiente</a>
+    {{/if}}
+  </div>
 </div>
     
 </body>

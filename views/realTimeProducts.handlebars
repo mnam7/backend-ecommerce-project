@@ -17,6 +17,15 @@
             {{/each}}
         </ul>
     </div>
+    <div class="pagination">
+    {{#if hasPrevPage}}
+      <a href="/students_paginate_natural?page={{prevPage}}&limit=10">Anterior</a>
+    {{/if}}
+    <span>Página {{currentPage}} de {{totalPages}}</span>
+    {{#if hasNextPage}}
+      <a href="/students_paginate_natural?page={{nextPage}}&limit=10">Siguiente</a>
+    {{/if}}
+  </div>
     <div>
         <button onClick="agregarProducto()">Agregar Producto</button>
         <button onClick="eliminarProducto()">Eliminar Producto</button>
